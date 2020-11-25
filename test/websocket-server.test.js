@@ -576,35 +576,6 @@ describe('WebSocketServer', () => {
         });
       });
 
-      it('can accept client synchronously', (done) => {
-        const server = https.createServer({
-          cert: fs.readFileSync('test/fixtures/certificate.pem'),
-          key: fs.readFileSync('test/fixtures/key.pem')
-        });
-
-        const wss = new WebSocket.Server({
-          verifyClient: (info) => {
-            assert.strictEqual(info.origin, 'https://example.com');
-            assert.strictEqual(info.req.headers.foo, 'bar');
-            assert.ok(info.secure, true);
-            return true;
-          },
-          server
-        });
-
-        wss.on('connection', () => {
-          wss.close();
-          server.close(done);
-        });
-
-        server.listen(0, () => {
-          const ws = new WebSocket(`wss://localhost:${server.address().port}`, {
-            headers: { Origin: 'https://example.com', foo: 'bar' },
-            rejectUnauthorized: false
-          });
-        });
-      });
-
       it('can accept client asynchronously', (done) => {
         const wss = new WebSocket.Server(
           {
