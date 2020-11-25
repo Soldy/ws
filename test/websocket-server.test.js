@@ -4,11 +4,9 @@
 
 const assert = require('assert');
 const crypto = require('crypto');
-const https = require('https');
 const http = require('http');
 const path = require('path');
 const net = require('net');
-const fs = require('fs');
 const os = require('os');
 
 const Sender = require('../lib/sender');

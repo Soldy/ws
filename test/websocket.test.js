@@ -4,10 +4,7 @@
 
 const assert = require('assert');
 const crypto = require('crypto');
-const https = require('https');
 const http = require('http');
-const tls = require('tls');
-const fs = require('fs');
 const { URL } = require('url');
 
 const WebSocket = require('..');
