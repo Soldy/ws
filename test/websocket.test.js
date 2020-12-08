@@ -2105,7 +2105,6 @@ describe('WebSocket', () => {
       });
     });
   });
-
   describe('Request headers', () => {
     it('adds the authorization header if the url has userinfo', (done) => {
       const agent = new CustomAgent();
